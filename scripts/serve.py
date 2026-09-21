@@ -66,18 +66,21 @@ class RangeRequestHandler(SimpleHTTPRequestHandler):
         return source
 
     def copyfile(self, source, outputfile) -> None:
-        if self.range is None:
-            shutil.copyfileobj(source, outputfile)
+        try:
+            if self.range is None:
+                shutil.copyfileobj(source, outputfile)
+                return
+            start, end = self.range
+            source.seek(start)
+            remaining = end - start + 1
+            while remaining:
+                chunk = source.read(min(1024 * 1024, remaining))
+                if not chunk:
+                    break
+                outputfile.write(chunk)
+                remaining -= len(chunk)
+        except (BrokenPipeError, ConnectionResetError):
             return
-        start, end = self.range
-        source.seek(start)
-        remaining = end - start + 1
-        while remaining:
-            chunk = source.read(min(1024 * 1024, remaining))
-            if not chunk:
-                break
-            outputfile.write(chunk)
-            remaining -= len(chunk)
 
 
 def main() -> None:
