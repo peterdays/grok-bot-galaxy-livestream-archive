@@ -386,7 +386,7 @@ async function render() {
 
     els.loading.hidden = true;
     els.view.hidden = false;
-    document.title = day.label + " " + chapter.range + " · Grokbot Broadcast Digest";
+    document.title = day.label + " " + chapter.range + " · Grok Bot Galaxy Archive";
     loadLabels(day, chapter);
   } catch (error) {
     if (token !== renderToken) return;

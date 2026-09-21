@@ -1,11 +1,34 @@
-# Grokbot Broadcast Digest
+# Grok Bot Galaxy Livestream Archive
 
-An open, reproducible archive of the three-day Grokbot Galaxy broadcast: ranked
-viewing guides, chapter-by-chapter analysis, complete machine transcripts, and a
-small click-through viewer. The original videos stay local and are never added
-to Git.
+Search and explore all **25 hours, 6 minutes** of xAI's three-day
+[Grok Bot Galaxy](https://x.ai/galaxy) livestream without scrubbing through the
+full recordings. This independent archive turns Days 1–3 into ranked highlights,
+timestamped chapter summaries, complete searchable transcripts, subtitles, and
+a local video viewer that jumps to the exact moment.
 
-## Browse the digest
+At Grok Bot Galaxy, the xAI team used Grok Bot across a live company build,
+alongside role-specific demos and workshops. This repository preserves the
+practical engineering, agent-orchestration, debugging, reliability, sales, and
+marketing lessons in a form you can browse in minutes.
+
+- **Find the useful parts:** 50 scored chapters plus ranked viewing guides.
+- **Search every word:** Markdown, plain text, SRT, VTT, and raw JSONL.
+- **Jump straight to evidence:** chapter and transcript timestamps seek local video.
+- **Reproduce the archive:** yt-dlp download and resumable Faster-Whisper pipeline.
+
+The recordings stay local and are never committed.
+
+## Inside the archive
+
+[![Grok Bot Galaxy chapter summary viewer](docs/screenshots/chapter-summary.png)](docs/screenshots/chapter-summary.png)
+
+*Browse the three-day timeline and open concise, timestamped chapter summaries.*
+
+[![Grok Bot Galaxy timestamped transcript viewer](docs/screenshots/timestamped-transcript.png)](docs/screenshots/timestamped-transcript.png)
+
+*Search the complete transcript and jump from any timestamp to the matching moment.*
+
+## Run the searchable viewer
 
 Start the static viewer from the repository root:
 
@@ -93,7 +116,7 @@ Each day contains:
 
 The transcripts were generated locally with Faster-Whisper `small.en`. They are
 complete but not human-edited. Common errors include “SpaceX AI” for “xAI” and
-“RockBot/Grokbat” for “Grokbot”. Verify exact quotations against the recording.
+“RockBot/Grokbat” for “Grok Bot”. Verify exact quotations against the recording.
 
 ## Publishing and rights
 

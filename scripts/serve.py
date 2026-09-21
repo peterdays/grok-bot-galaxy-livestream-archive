@@ -94,7 +94,7 @@ def main() -> None:
         *items, directory=str(args.directory.resolve()), **kwargs
     )
     server = ThreadingHTTPServer((args.bind, args.port), handler)
-    print(f"Grokbot digest: http://{args.bind}:{args.port}/docs/", flush=True)
+    print(f"Grok Bot Galaxy archive: http://{args.bind}:{args.port}/docs/", flush=True)
     try:
         server.serve_forever()
     except KeyboardInterrupt:

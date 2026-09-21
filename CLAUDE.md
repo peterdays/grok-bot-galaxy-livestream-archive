@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A static, reproducible archive/digest of a three-day X (Twitter) livestream broadcast ("Grokbot Galaxy"). It contains machine-generated transcripts, chapter-by-chapter analysis/guides, and a dependency-free static viewer. Source videos are never committed — `videos/` is gitignored, and downloads/transcription are meant to be reproduced locally by anyone with the original broadcast URLs (listed in `broadcasts.json`).
+A static, reproducible archive of the three-day X livestream event "Grok Bot Galaxy." It contains machine-generated transcripts, chapter-by-chapter analysis/guides, and a dependency-free static viewer. Source videos are never committed — `videos/` is gitignored, and downloads/transcription are meant to be reproduced locally by anyone with the original broadcast URLs (listed in `broadcasts.json`).
 
 ## Commands
 
 Browse the viewer locally:
 
 ```bash
-python3 -m http.server 8000
+python3 scripts/serve.py
 # open http://localhost:8000/docs/
 ```
 
@@ -65,6 +65,6 @@ There is no build, lint, or test suite — this is a content archive, not an app
 
 - Preserve timestamps when correcting transcript text.
 - Mark claims as demonstrated, asserted, or inferred where that distinction matters (this repo evaluates livestream claims, not just transcribes them).
-- Verify exact quotations and proper nouns against the source video — Faster-Whisper `small.en` output is unedited and has known recurring errors (e.g. "SpaceX AI" for "xAI", "RockBot/Grokbat" for "Grokbot").
+- Verify exact quotations and proper nouns against the source video — Faster-Whisper `small.en` output is unedited and has known recurring errors (e.g. "SpaceX AI" for "xAI", "RockBot/Grokbat" for "Grok Bot").
 - Do not commit broadcast video/audio, browser cookies, access tokens, or model caches — `.gitignore` already excludes `videos/*` and working artifacts; run `git status` before publishing to confirm nothing sensitive is staged.
 - After editing any guide, chapter, or raw transcript in `content/`, run `scripts/sync_viewer_data.sh` before considering the change done.
