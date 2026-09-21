@@ -11,7 +11,7 @@ A static, reproducible archive of the three-day X livestream event "Grok Bot Gal
 Browse the viewer locally:
 
 ```bash
-python3 scripts/serve.py
+make run
 # open http://localhost:8000/docs/
 ```
 

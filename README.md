@@ -33,7 +33,7 @@ The recordings stay local and are never committed.
 Start the static viewer from the repository root:
 
 ```bash
-python3 scripts/serve.py
+make run
 ```
 
 Open <http://localhost:8000/docs/>. Pick a day, click a time range, and switch
@@ -41,6 +41,8 @@ between the chapter summary and the matching transcript slice. Timestamp links
 load the local video at the exact matching second when it is present under
 `videos/`. The included server supports byte ranges, so seeking does not require
 downloading a multi-gigabyte file from the beginning.
+
+Use `make run PORT=8080` to choose a different port.
 
 | Broadcast | Duration | Guide | Transcript |
 |---|---:|---|---|

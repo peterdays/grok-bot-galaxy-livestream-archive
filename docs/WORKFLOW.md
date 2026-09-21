@@ -88,7 +88,7 @@ After editing a guide, chapter, or transcript, refresh the viewer:
 
 ```bash
 scripts/sync_viewer_data.sh
-python3 scripts/serve.py
+make run
 ```
 
 Open `http://localhost:8000/docs/`. A local web server is required because
