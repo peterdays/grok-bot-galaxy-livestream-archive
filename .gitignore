@@ -1,0 +1,29 @@
+# Large local media. Keep only the explanation file in Git.
+videos/*
+!videos/README.md
+
+# Download scratch files
+*.part
+*.ytdl
+
+# Local Python/runtime state
+.venv/
+.cache/
+**/.models/
+__pycache__/
+*.py[cod]
+
+# Superseded working files kept locally for provenance
+artifacts/
+
+# Editors and operating systems
+.DS_Store
+.idea/
+.vscode/
+
+# Test/build scratch
+.pytest_cache/
+dist/
+build/
+*.orig
+*.rej

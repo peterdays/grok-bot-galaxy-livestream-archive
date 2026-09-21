@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "broadcasts": [
+    {
+      "slug": "day-1",
+      "day": 1,
+      "title": "Grok Bot Galaxy Livestream",
+      "duration": "08:45:12",
+      "duration_seconds": 31512,
+      "broadcast_id": "1AxRnZbVpjaxl",
+      "source_url": "https://x.com/i/broadcasts/1AxRnZbVpjaxl",
+      "video_filename": "Day 1： Grok Bot Galaxy Livestream [1AxRnZbVpjaxl].mp4",
+      "content_dir": "content/day-1",
+      "chapter_glob": "day1_*.md"
+    },
+    {
+      "slug": "day-2",
+      "day": 2,
+      "title": "Grok Bot builds a Game Studio LIVE",
+      "duration": "08:23:18",
+      "duration_seconds": 30198,
+      "broadcast_id": "1PKqrNyvmYwGb",
+      "source_url": "https://x.com/i/broadcasts/1PKqrNyvmYwGb",
+      "video_filename": "Day 2: Grok Bot builds a Game Studio LIVE [1PKqrNyvmYwGb].mp4",
+      "content_dir": "content/day-2",
+      "chapter_glob": "day2_*.md"
+    },
+    {
+      "slug": "day-3",
+      "day": 3,
+      "title": "Building a company in 3 days — launching today!",
+      "duration": "07:58:22",
+      "duration_seconds": 28702,
+      "broadcast_id": "1YGNrbXEeazGw",
+      "source_url": "https://x.com/i/broadcasts/1YGNrbXEeazGw",
+      "video_filename": "Day 3: Building a company in 3 days - launching today! [1YGNrbXEeazGw].mp4",
+      "content_dir": "content/day-3",
+      "chapter_glob": "day3_*.md"
+    }
+  ]
+}

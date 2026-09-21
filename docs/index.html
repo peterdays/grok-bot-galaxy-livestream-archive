@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse the Grokbot broadcast by day, chapter, summary, and transcript.">
+  <title>Grokbot Broadcast Digest</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#chapter-content">Skip to chapter</a>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">Open broadcast notes</p>
+      <h1>Grokbot Broadcast Digest</h1>
+      <p class="lede">Eight-hour broadcasts, mapped into chapters you can actually use.</p>
+    </div>
+    <p class="source-note">Videos stay local. Notes and transcripts are open.</p>
+  </header>
+
+  <nav class="day-nav" aria-label="Broadcast day">
+    <div id="day-tabs" class="day-tabs" role="tablist"></div>
+  </nav>
+
+  <div class="app-shell">
+    <aside class="chapter-panel" aria-labelledby="chapter-list-title">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Timeline</p>
+          <h2 id="chapter-list-title">Chapters</h2>
+        </div>
+        <span id="chapter-count" class="count" aria-live="polite"></span>
+      </div>
+      <label class="search">
+        <span class="sr-only">Filter chapters</span>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+        <input id="chapter-search" type="search" placeholder="Filter this day…" autocomplete="off">
+      </label>
+      <ol id="chapter-list" class="chapter-list"></ol>
+    </aside>
+
+    <main id="chapter-content" class="content-panel" tabindex="-1">
+      <div id="loading" class="loading" role="status">Loading chapter…</div>
+      <article id="chapter-view" hidden>
+        <div class="chapter-header">
+          <div>
+            <p id="chapter-kicker" class="eyebrow"></p>
+            <h2 id="chapter-title"></h2>
+            <p id="chapter-range" class="range"></p>
+          </div>
+          <button id="watch-link" class="watch-link" type="button" title="Play the matching local video from this chapter">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 7 8 5-8 5V7Z"/></svg>
+            <span>Play this chapter</span>
+          </button>
+        </div>
+
+        <section id="video-dock" class="video-dock" aria-label="Local broadcast video" hidden>
+          <video id="video-player" controls preload="metadata"></video>
+          <div class="video-meta">
+            <p id="video-status" role="status">Loading local video…</p>
+            <a id="open-video" href="#" target="_blank" rel="noopener">Open video in a new tab</a>
+          </div>
+        </section>
+
+        <div class="content-tabs" role="tablist" aria-label="Chapter content">
+          <button id="summary-tab" class="content-tab" type="button" role="tab" aria-controls="summary-panel">Summary</button>
+          <button id="transcript-tab" class="content-tab" type="button" role="tab" aria-controls="transcript-panel">Transcript</button>
+        </div>
+
+        <section id="summary-panel" class="tab-panel prose" role="tabpanel" aria-labelledby="summary-tab"></section>
+        <section id="transcript-panel" class="tab-panel" role="tabpanel" aria-labelledby="transcript-tab" hidden>
+          <div class="transcript-toolbar">
+            <p id="transcript-status"></p>
+            <button id="copy-link" class="text-button" type="button">Copy chapter link</button>
+          </div>
+          <div id="transcript-lines" class="transcript-lines"></div>
+        </section>
+      </article>
+    </main>
+  </div>
+
+  <footer>
+    <p>Machine-generated transcripts can mishear names and technical terms. Timestamp links expect untracked video files in <code>videos/</code>.</p>
+  </footer>
+  <script src="app.js" defer></script>
+</body>
+</html>
