@@ -12,6 +12,7 @@ practical engineering, agent-orchestration, debugging, reliability, sales, and
 marketing lessons in a form you can browse in minutes.
 
 - **Find the useful parts:** 50 scored chapters plus ranked viewing guides.
+- **Navigate the broadcast by format:** continuous maps for all three days, with thumbnails and tags for presentations, screen work, team discussion, and breaks.
 - **Search every word:** Markdown, plain text, SRT, VTT, and raw JSONL.
 - **Jump straight to evidence:** chapter and transcript timestamps seek local video.
 - **Reproduce the archive:** yt-dlp download and resumable Faster-Whisper pipeline.
@@ -20,13 +21,18 @@ The recordings stay local and are never committed.
 
 ## Inside the archive
 
-[![Grok Bot Galaxy chapter summary viewer](docs/screenshots/chapter-summary.png)](docs/screenshots/chapter-summary.png)
+The viewer now opens on a **continuous format map** for the selected day. Each
+section is shown with a thumbnail and a format tag—presentation, screen work,
+team discussion, or break/transition—so you can choose what to watch before
+opening its notes or transcript.
 
-*Browse the three-day timeline and open concise, timestamped chapter summaries.*
+[![Day 1 continuous format map in the Grok Bot Galaxy viewer](docs/screenshots/chapter-summary.png)](docs/screenshots/chapter-summary.png)
 
-[![Grok Bot Galaxy timestamped transcript viewer](docs/screenshots/timestamped-transcript.png)](docs/screenshots/timestamped-transcript.png)
+*Start with a continuous format map: every visible section has a thumbnail and a type tag.*
 
-*Search the complete transcript and jump from any timestamp to the matching moment.*
+[![Day 2 map entry opened in the timestamped transcript view](docs/screenshots/timestamped-transcript.png)](docs/screenshots/timestamped-transcript.png)
+
+*Move from the Day 2 map into the matching transcript slice and jump to the exact moment.*
 
 ## Run the searchable viewer
 
@@ -36,8 +42,10 @@ Start the static viewer from the repository root:
 make run
 ```
 
-Open <http://localhost:8000/docs/>. Pick a day, click a time range, and switch
-between the chapter summary and the matching transcript slice. Timestamp links
+Open <http://localhost:8000/docs/>. Choose a day, then select a tagged section
+from its format map; the detail pane opens its summary and matching transcript
+slice. Expand **Filter sections by type** to switch to presentations, screen
+work, team discussions, or the original fixed-window timeline. Timestamp links
 load the local video at the exact matching second when it is present under
 `videos/`. The included server supports byte ranges, so seeking does not require
 downloading a multi-gigabyte file from the beginning.
