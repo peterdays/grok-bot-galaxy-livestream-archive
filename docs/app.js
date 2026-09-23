@@ -77,6 +77,121 @@ const daySpecs = {
   }
 };
 
+// Editorial wayfinding sits beside the archival half-hour notes. These are
+// deliberately short, exact moments; use Timeline for complete coverage.
+const formatMoments = [
+  ["presentation", "day1", 1825, 3555, "Grokbot 101: persistent teammates, computer use, approvals, and learned skills"],
+  ["presentation", "day1", 14047, 1442, "Grok Bot for Engineers: orchestration, verification, and the engineering workflow", "Ling Shi"],
+  ["presentation", "day1", 9950, 930, "Launch metrics and distribution: Codie’s operating-model session"],
+  ["presentation", "day2", 1800, 3250, "Sales-engineering workshop: teach a browser task, create specialist bots, and discuss safety"],
+  ["presentation", "day2", 19331, 469, "Document-workshop demo: research, generate, critique, and improve a PDF"],
+  ["build", "day3", 731, 608, "Live launch review: software factory, event-driven QA, and the current game", "Lauren Tan & team"],
+  ["presentation", "day3", 14233, 1966, "Customer-success workshop: post-call pack, ROI form, and multi-agent staff meeting"],
+  ["build", "day1", 5720, 2000, "Hackathon kickoff: market research, idea selection, and first specialist bots"],
+  ["build", "day1", 13820, 211, "Factory review automation and handoff back to the hackathon", "Matt and the founder team"],
+  ["build", "day1", 7200, 2100, "Build the pop-up MVP: prototype, repo, deployment, database, and cloud agents"],
+  ["build", "day1", 17036, 1644, "Founders at the controls: Slack review channels, verification skill, and live data path"],
+  ["discussion", "day2", 5050, 1441, "Founder-team planning and setup before the Cursor coding session", "Lauren Tan & team"],
+  ["build", "day2", 6491, 2272, "Lauren’s Cursor session: prototype scope, game-variable controls, and first playable variants", "Lauren Tan"],
+  ["build", "day2", 11464, 2496, "tldraw flow, design corrections, animation experiments, and testing", "Lauren Tan"],
+  ["build", "day2", 23000, 4000, "Playable game iteration: balance, effects, leaderboard, and browser verification"],
+  ["build", "day3", 5701, 2415, "Launch rehearsal: reproduce bugs, redesign combat clarity, ship, and watch the pulse", "Lauren Tan & team"],
+  ["build", "day3", 18000, 1749, "Live mobile play test: four parallel fixes, browser proof, and a reviewed merge", "Lauren Tan & team"],
+  ["presentation", "day3", 22231, 3469, "Marketing workflow workshop: research, positioning, landing-page work, and ad iteration"],
+  ["discussion", "day1", 495, 1185, "Founders frame the challenge: what to build, why, and the initial operating model"],
+  ["discussion", "day1", 5892, 1108, "Three-person product debate: choose the pop-up loop, scope it, and divide ownership"],
+  ["discussion", "day1", 18000, 1880, "Founder decisions while agents work: first step, manual discovery, scope, and positioning"],
+  ["discussion", "day2", 604, 1190, "Pivot discussion: abandon the pop-up and define the game’s core loop and MVP"],
+  ["discussion", "day2", 8763, 1005, "Team play test: discover strategy and economy failures, then decide what to change"],
+  ["discussion", "day2", 28200, 1450, "End-of-day retrospective: what shipped, what broke, and what the game still needs"],
+  ["build", "day3", 8100, 1850, "Live game play test, feedback triage, and production-autopilot setup", "Lauren Tan & team"],
+  ["discussion", "day3", 24714, 3188, "Candid launch review: matchmaking, project debt, auto-merge, and distribution lessons"]
+].map(function (item, index) {
+  return { id: "moment" + index, format: item[0], day: item[1], start: item[2], end: item[2] + item[3], label: item[4], speakers: item[5] || "", thumb: "assets/thumbnails/moment" + index + ".jpg" };
+});
+
+
+const formatMap = [
+  ["other", 0, 731, "Pre-show and launch introduction"],
+  ["build", 731, 1339, "Live launch review: factory, QA, and game state"],
+  ["other", 1339, 1800, "Giveaway, logistics, and transition"],
+  ["presentation", 1800, 4262, "Sales/operations workshop and Q&A"],
+  ["other", 4262, 4863, "Promotion and intermission"],
+  ["build", 4863, 9212, "Launch hardening, play test, release, and feedback system"],
+  ["presentation", 9212, 9491, "Nokia engineering case study"],
+  ["other", 9491, 9854, "Intermission"],
+  ["discussion", 9854, 11476, "Founder growth and product discussion"],
+  ["other", 11476, 12188, "Promotion and stage transition"],
+  ["presentation", 12188, 17149, "Marketing-operations and customer-success workshops"],
+  ["other", 17149, 17600, "Stage handoff and launch transition"],
+  ["build", 17600, 19800, "Responsive game test, parallel fixes, and verification"],
+  ["presentation", 19800, 24177, "Payments and marketing workflow workshops"],
+  ["other", 24177, 24298, "Return-to-studio transition"],
+  ["build", 24298, 26292, "Live engineering review, gameplay, and production fixes"],
+  ["other", 26292, 27054, "Break and limited-time promotion"],
+  ["discussion", 27054, 28702, "Final product review, retrospective, and launch results"]
+].map(function (item, index) {
+  return { id: "day3map" + index, format: item[0], day: "day3", start: item[1], end: item[2], label: item[3], thumb: "assets/thumbnails/day3-map" + index + ".jpg" };
+});
+const day1FormatMap = [
+  ["discussion", 0, 1825, "Opening, host introductions, and the build challenge"],
+  ["presentation", 1825, 5380, "Grokbot 101: product model and live demonstrations"],
+  ["other", 5380, 5464, "Transition and workspace reset"],
+  ["build", 5464, 7200, "Market-research bot setup and live ideation"],
+  ["discussion", 7200, 9000, "Founder product discovery, MVP scope, and bot-team design"],
+  ["build", 9000, 10526, "Prototype, repository, deployment, and cloud-agent setup"],
+  ["presentation", 10526, 11968, "Codie’s launch-metrics and distribution session"],
+  ["other", 11968, 13820, "Break and workshop handoff"],
+  ["build", 13820, 14047, "Factory review automation and hackathon handoff"],
+  ["presentation", 14047, 16812, "Ling Shi: Grok Bot for Engineers workshop"],
+  ["other", 16812, 17036, "Workshop close and return to founders"],
+  ["build", 17036, 19800, "Slack automation, verification, and the live product data path"],
+  ["discussion", 19800, 21252, "Founder scope, venue, customer, and product decisions"],
+  ["presentation", 21252, 23400, "Product-manager workshop and data-bot demonstration"],
+  ["other", 23400, 24074, "Promotion, Q&A, and break"],
+  ["discussion", 24074, 26580, "Founder product scope, visual prototyping, and merchandise discussion"],
+  ["presentation", 26580, 30010, "Founder workflows workshop and Q&A"],
+  ["presentation", 30010, 31320, "Guest fleet walkthrough and venue-planning session"],
+  ["discussion", 31320, 31460, "Day 1 retrospective"],
+  ["other", 31460, 31512, "Contest reminder and sign-off"]
+].map(function (item, index) {
+  return { id: "day1map" + index, format: item[0], day: "day1", start: item[1], end: item[2], label: item[3], thumb: "assets/thumbnails/day1-map" + index + ".jpg" };
+});
+const day2FormatMap = [
+  ["other", 0, 604, "Pre-stream and opening slate"],
+  ["discussion", 604, 1800, "Team pivot and whiteboard: replace the pop-up with a bot-battle game"],
+  ["presentation", 1800, 5050, "Sales-engineering workshop: specialist bots, browser work, and safety"],
+  ["discussion", 5050, 6491, "Team planning, visual direction, and prototype setup"],
+  ["build", 6491, 8763, "Lauren builds the first playable game in Cursor"],
+  ["discussion", 8763, 9000, "Play-test review: strategy, rarity, and MVP changes"],
+  ["other", 9000, 9543, "Break and guest handoff"],
+  ["presentation", 9543, 11026, "Personal-agent workshop: morning newspaper, package tracking, and templates"],
+  ["other", 11026, 11464, "Break and return to the build"],
+  ["build", 11464, 14400, "Game UX, animation, security fixes, and browser verification"],
+  ["presentation", 14400, 16370, "Sales operations workshop: bot teams, routing, and workflow design"],
+  ["other", 16370, 17029, "Intermission and guest handoff"],
+  ["presentation", 17029, 19800, "Personal operations and job-search automation workshops"],
+  ["discussion", 19800, 20138, "Go-to-market discussion and work-log review"],
+  ["presentation", 20138, 21600, "Remotion ads workshop, career Q&A, and code-native creative workflow"],
+  ["presentation", 21600, 23988, "SDR workshop: orchestration, prospecting, and specialist routing"],
+  ["other", 23988, 24061, "Workshop handoff"],
+  ["build", 24061, 27000, "Game architecture, agent fleet, Cursor Projects, and prototype review"],
+  ["presentation", 27000, 29439, "Customer-support workshop: safe autonomy, evidence, and approvals"],
+  ["build", 29439, 29634, "Music and game-asset review"],
+  ["discussion", 29634, 29949, "Candid app status, play-test results, and fleet retrospective"],
+  ["other", 29949, 30198, "Sign-off and end slate"]
+].map(function (item, index) {
+  return { id: "day2map" + index, format: item[0], day: "day2", start: item[1], end: item[2], label: item[3], thumb: "assets/thumbnails/day2-map" + index + ".jpg" };
+});
+
+const browseSpecs = {
+  timeline: { kicker: "Timeline", title: "Chapters", description: "Fixed time windows, with the strongest moment in each shown as its label.", placeholder: "Filter this day…" },
+  presentation: { kicker: "Watch by format", title: "Presentations & demos", description: "Product explanation, sponsored-style workshops, and standalone demonstrations across all three days.", placeholder: "Filter presentations…" },
+  map: { kicker: "Format map", title: "Continuous format map", description: "A continuous visual guide to the broadcast. Breaks and transitions stay visible, and every section is tagged by type.", placeholder: "Filter this map…" },
+  build: { kicker: "Hackathon", title: "Screen work", description: "The builders are driving Grokbot, Cursor, the game, or surrounding tools. These are the hands-on blocks.", placeholder: "Filter screen work…" },
+  discussion: { kicker: "Hackathon", title: "Team discussion", description: "The three founders are brainstorming, making product calls, playing the build, or reflecting on what happened.", placeholder: "Filter discussions…" }
+};
+
 for (const [dayId, day] of Object.entries(daySpecs)) {
   day.id = dayId;
   day.chapters = day.chapters.map(function (values) {
@@ -95,6 +210,9 @@ const els = {
   dayTabs: document.querySelector("#day-tabs"),
   chapterList: document.querySelector("#chapter-list"),
   chapterCount: document.querySelector("#chapter-count"),
+  browseTabs: document.querySelector("#browse-tabs"),
+  browseKicker: document.querySelector("#browse-kicker"),
+  browseDescription: document.querySelector("#browse-description"),
   search: document.querySelector("#chapter-search"),
   loading: document.querySelector("#loading"),
   view: document.querySelector("#chapter-view"),
@@ -122,7 +240,9 @@ function route() {
   const requested = params.get("chapter");
   const chapter = spec.chapters.find(function (item) { return item.id === requested; }) || spec.chapters[0];
   const tab = params.get("tab") === "transcript" ? "transcript" : "summary";
-  return { day: dayId, chapter: chapter, tab: tab };
+  const browse = browseSpecs[params.get("browse")] ? params.get("browse") : "timeline";
+  const moment = formatMoments.concat(formatMap, day1FormatMap).find(function (item) { return item.day === dayId && item.start === Number(params.get("start")); });
+  return { day: dayId, chapter: chapter, tab: tab, browse: browse, moment: moment };
 }
 
 function navigate(next) {
@@ -131,7 +251,10 @@ function navigate(next) {
   const spec = daySpecs[dayId];
   const chapter = next.chapter || (dayId !== current.day ? spec.chapters[0] : current.chapter);
   const tab = next.tab || current.tab;
-  location.hash = new URLSearchParams({ day: dayId, chapter: chapter.id, tab: tab }).toString();
+  const browse = next.browse || current.browse;
+  const params = new URLSearchParams({ day: dayId, chapter: chapter.id, tab: tab, browse: browse });
+  if (next.moment) params.set("start", String(next.moment.start));
+  location.hash = params.toString();
 }
 
 function escapeHtml(value) {
@@ -151,6 +274,15 @@ function plainText(markdown) {
     .replace(/\x60/g, "")
     .replace(/\s+/g, " ")
     .trim();
+}
+
+function formatName(format) {
+  return {
+    presentation: "Presentation",
+    build: "Screen work",
+    discussion: "Team discussion",
+    other: "Break / transition"
+  }[format] || format;
 }
 
 function inline(markdown) {
@@ -278,13 +410,53 @@ function renderDayTabs(activeDay) {
     button.role = "tab";
     button.setAttribute("aria-selected", String(day.id === activeDay.id));
     button.textContent = day.label;
-    button.addEventListener("click", function () { navigate({ day: day.id, chapter: day.chapters[0] }); });
+    button.addEventListener("click", function () {
+      const current = route();
+      const hasMap = formatMap.concat(day1FormatMap, day2FormatMap).some(function (moment) { return moment.day === day.id; });
+      navigate({ day: day.id, chapter: day.chapters[0], browse: current.browse === "map" && !hasMap ? "timeline" : current.browse });
+    });
     els.dayTabs.append(button);
   });
 }
 
-function renderChapterList(day, activeChapter) {
+function renderBrowseTabs(activeBrowse) {
+  els.browseTabs.querySelectorAll(".browse-tab").forEach(function (button) {
+    const selected = button.dataset.browse === activeBrowse;
+    button.setAttribute("aria-selected", String(selected));
+    button.tabIndex = selected ? 0 : -1;
+  });
+  const spec = browseSpecs[activeBrowse];
+  els.browseKicker.textContent = spec.kicker;
+  document.querySelector("#chapter-list-title").textContent = spec.title;
+  els.browseDescription.textContent = spec.description;
+  els.search.placeholder = spec.placeholder;
+}
+
+function renderChapterList(day, activeChapter, browse) {
   const query = els.search.value.trim().toLowerCase();
+  if (browse !== "timeline") {
+    const candidates = browse === "map" ? formatMap.concat(day1FormatMap, day2FormatMap).filter(function (moment) { return moment.day === day.id; }) : formatMoments;
+    const visibleMoments = candidates.filter(function (moment) {
+      const text = daySpecs[moment.day].label + " " + clock(moment.start) + " " + moment.label;
+      return (browse === "map" || moment.format === browse) && (!query || text.toLowerCase().includes(query));
+    });
+    els.chapterCount.textContent = visibleMoments.length + " moments";
+    els.chapterList.innerHTML = "";
+    visibleMoments.forEach(function (moment) {
+      const destination = daySpecs[moment.day].chapters.find(function (item) { return moment.start >= item.start && moment.start < item.end; });
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "chapter-button";
+      button.setAttribute("aria-current", String(moment.day === day.id && destination && destination.id === activeChapter.id));
+      button.innerHTML = '<img class="moment-thumb" src="' + escapeHtml(moment.thumb) + '" alt="" loading="lazy"><span class="moment-copy"><time>' + escapeHtml(daySpecs[moment.day].label + " · " + clock(moment.start).slice(0, 5) + "–" + clock(moment.end).slice(0, 5) + (moment.speakers ? " · " + moment.speakers : "")) + "</time><span>" + escapeHtml(moment.label) + '</span><span class="moment-tags"><span class="format-tag format-' + escapeHtml(moment.format) + '">' + escapeHtml(formatName(moment.format)) + "</span></span></span>";
+      button.addEventListener("click", function () { navigate({ day: moment.day, chapter: destination, browse: browse, moment: moment }); });
+      const li = document.createElement("li");
+      li.append(button);
+      els.chapterList.append(li);
+    });
+    if (!visibleMoments.length) els.chapterList.innerHTML = '<li class="empty">No matching moments.</li>';
+    return;
+  }
   const visible = day.chapters.filter(function (chapter) {
     return !query || (chapter.range + " " + chapter.label).toLowerCase().includes(query);
   });
@@ -326,7 +498,7 @@ async function loadLabels(day, activeChapter) {
       chapter.label = "Chapter notes unavailable";
     }
   }));
-  if (route().day === day.id) renderChapterList(day, activeChapter);
+  if (route().day === day.id) renderChapterList(day, activeChapter, route().browse);
 }
 
 async function render() {
@@ -334,8 +506,13 @@ async function render() {
   const current = route();
   const day = daySpecs[current.day];
   const chapter = current.chapter;
+  const moment = current.moment;
+  const start = moment ? moment.start : chapter.start;
+  const end = moment ? moment.end : chapter.end;
+  const range = moment ? clock(start) + "–" + clock(end) : chapter.range;
   renderDayTabs(day);
-  renderChapterList(day, chapter);
+  renderBrowseTabs(current.browse);
+  renderChapterList(day, chapter, current.browse);
   setActiveTab(current.tab);
   els.loading.hidden = false;
   els.loading.textContent = "Loading chapter…";
@@ -347,16 +524,16 @@ async function render() {
     const summary = results[0];
     const transcript = results[1];
     chapter.label = chapterLabel(summary);
-    renderChapterList(day, chapter);
+    renderChapterList(day, chapter, current.browse);
 
     els.kicker.textContent = day.label + " · " + day.duration + " total";
-    els.title.textContent = chapter.label;
-    els.range.textContent = chapter.range;
-    els.watch.querySelector("span").textContent = "Play from " + chapter.range.split("–")[0];
-    els.openVideo.href = videoUrl(day, chapter.start);
+    els.title.textContent = moment ? moment.label : chapter.label;
+    els.range.textContent = range;
+    els.watch.querySelector("span").textContent = "Play from " + range.split("–")[0];
+    els.openVideo.href = videoUrl(day, start);
     if (!els.videoDock.hidden) {
       if (els.videoPlayer.dataset.day === day.id) {
-        seekVideo(day, chapter.start, false);
+        seekVideo(day, start, false);
       } else {
         els.videoPlayer.pause();
         els.videoDock.hidden = true;
@@ -365,9 +542,9 @@ async function render() {
     els.summaryPanel.innerHTML = renderMarkdown(summary);
 
     const lines = transcript.filter(function (item) {
-      return item.seconds >= chapter.start && item.seconds < chapter.end;
+      return item.seconds >= start && item.seconds < end;
     });
-    els.transcriptStatus.textContent = lines.length.toLocaleString() + " transcript segments in this chapter";
+    els.transcriptStatus.textContent = lines.length.toLocaleString() + " transcript segments in this " + (moment ? "moment" : "chapter");
     els.transcriptLines.innerHTML = lines.length
       ? lines.map(function (item) {
         return '<div class="transcript-line"><time><button type="button" class="timestamp-button"'
@@ -397,7 +574,7 @@ async function render() {
 els.watch.addEventListener("click", function () {
   const current = route();
   const day = daySpecs[current.day];
-  seekVideo(day, current.chapter.start, true);
+  seekVideo(day, current.moment ? current.moment.start : current.chapter.start, true);
   els.videoPlayer.scrollIntoView({ behavior: "smooth", block: "nearest" });
 });
 
@@ -407,7 +584,17 @@ els.videoPlayer.addEventListener("error", function () {
 
 els.search.addEventListener("input", function () {
   const current = route();
-  renderChapterList(daySpecs[current.day], current.chapter);
+  renderChapterList(daySpecs[current.day], current.chapter, current.browse);
+});
+els.browseTabs.addEventListener("click", function (event) {
+  const button = event.target.closest("[data-browse]");
+  if (!button) return;
+  const browse = button.dataset.browse;
+  if (browse !== "map") return navigate({ browse: browse });
+  const current = route();
+  const mapDays = new Set(formatMap.concat(day1FormatMap, day2FormatMap).map(function (moment) { return moment.day; }));
+  const day = mapDays.has(current.day) ? current.day : "day3";
+  navigate({ browse: browse, day: day, chapter: daySpecs[day].chapters[0] });
 });
 els.summaryTab.addEventListener("click", function () { navigate({ tab: "summary" }); });
 els.transcriptTab.addEventListener("click", function () { navigate({ tab: "transcript" }); });
@@ -423,7 +610,7 @@ els.copyLink.addEventListener("click", async function () {
 
 window.addEventListener("hashchange", render);
 if (!location.hash) {
-  navigate({ day: "day1", chapter: daySpecs.day1.chapters[0], tab: "summary" });
+  navigate({ day: "day1", chapter: daySpecs.day1.chapters[0], tab: "summary", browse: "map" });
 } else {
   render();
 }

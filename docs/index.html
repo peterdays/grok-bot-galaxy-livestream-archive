@@ -27,11 +27,22 @@
     <aside class="chapter-panel" aria-labelledby="chapter-list-title">
       <div class="panel-heading">
         <div>
-          <p class="eyebrow">Timeline</p>
+          <p id="browse-kicker" class="eyebrow">Timeline</p>
           <h2 id="chapter-list-title">Chapters</h2>
         </div>
         <span id="chapter-count" class="count" aria-live="polite"></span>
       </div>
+      <p id="browse-description" class="browse-description">A continuous, visual map of the broadcast. Every section carries its own format tag.</p>
+      <details class="browse-options">
+        <summary>Filter sections by type</summary>
+        <div id="browse-tabs" class="browse-tabs" role="tablist" aria-label="Filter broadcast sections by type">
+          <button class="browse-tab" type="button" data-browse="map" role="tab">Format map</button>
+          <button class="browse-tab" type="button" data-browse="presentation" role="tab">Presentations</button>
+          <button class="browse-tab" type="button" data-browse="build" role="tab">Screen work</button>
+          <button class="browse-tab" type="button" data-browse="discussion" role="tab">Team discussion</button>
+          <button class="browse-tab" type="button" data-browse="timeline" role="tab">Original timeline</button>
+        </div>
+      </details>
       <label class="search">
         <span class="sr-only">Filter chapters</span>
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
